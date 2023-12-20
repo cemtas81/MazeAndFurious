@@ -36,10 +36,13 @@ namespace GameAnalyticsSDK.Wrapper
         private static extern void configureUserId(string userId);
 
         [DllImport ("__Internal")]
+        private static extern void configureExternalUserId(string userId);
+
+        [DllImport ("__Internal")]
         private static extern void configureAutoDetectAppVersion(bool flag);
 
         [DllImport ("__Internal")]
-        private static extern void initialize(string gamekey, string gamesecret);
+        private static extern void gaInitialize(string gamekey, string gamesecret, bool nativeErrorReporting);
 
         [DllImport ("__Internal")]
         private static extern void setCustomDimension01(string customDimension);
@@ -51,40 +54,43 @@ namespace GameAnalyticsSDK.Wrapper
         private static extern void setCustomDimension03(string customDimension);
 
         [DllImport ("__Internal")]
-        private static extern void addBusinessEvent(string currency, int amount, string itemType, string itemId, string cartType, string receipt, string fields);
+        private static extern void setGlobalCustomEventFields(string customFields);
 
         [DllImport ("__Internal")]
-        private static extern void addBusinessEventAndAutoFetchReceipt(string currency, int amount, string itemType, string itemId, string cartType, string fields);
+        private static extern void addBusinessEvent(string currency, int amount, string itemType, string itemId, string cartType, string receipt, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addResourceEvent(int flowType, string currency, float amount, string itemType, string itemId, string fields);
+        private static extern void addBusinessEventAndAutoFetchReceipt(string currency, int amount, string itemType, string itemId, string cartType, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addProgressionEvent(int progressionStatus, string progression01, string progression02, string progression03, string fields);
+        private static extern void addResourceEvent(int flowType, string currency, float amount, string itemType, string itemId, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addProgressionEventWithScore(int progressionStatus, string progression01, string progression02, string progression03, int score, string fields);
+        private static extern void addProgressionEvent(int progressionStatus, string progression01, string progression02, string progression03, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addDesignEvent(string eventId, string fields);
+        private static extern void addProgressionEventWithScore(int progressionStatus, string progression01, string progression02, string progression03, int score, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addDesignEventWithValue(string eventId, float value, string fields);
+        private static extern void addDesignEvent(string eventId, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addErrorEvent(int severity, string message, string fields);
+        private static extern void addDesignEventWithValue(string eventId, float value, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addAdEventWithDuration(int adAction, int adType, string adSdkName, string adPlacement, long duration);
+        private static extern void addErrorEvent(int severity, string message, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addAdEventWithReason(int adAction, int adType, string adSdkName, string adPlacement, int noAdReason);
+        private static extern void addAdEventWithDuration(int adAction, int adType, string adSdkName, string adPlacement, long duration, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addAdEvent(int adAction, int adType, string adSdkName, string adPlacement);
+        private static extern void addAdEventWithReason(int adAction, int adType, string adSdkName, string adPlacement, int noAdReason, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
-        private static extern void addImpressionEvent(string adNetworkName, string adNetworkVersion, string impressionData);
+        private static extern void addAdEvent(int adAction, int adType, string adSdkName, string adPlacement, string fields, bool mergeFields);
+
+        [DllImport ("__Internal")]
+        private static extern void addImpressionEvent(string adNetworkName, string adNetworkVersion, string impressionData, string fields, bool mergeFields);
 
         [DllImport ("__Internal")]
         private static extern void setEnabledInfoLog(bool enabled);
@@ -97,6 +103,9 @@ namespace GameAnalyticsSDK.Wrapper
 
         [DllImport ("__Internal")]
         private static extern void setEventSubmission(bool enabled);
+
+        [DllImport ("__Internal")]
+        private static extern void setEventSubmission(bool enabled, bool doCache);
 
         [DllImport ("__Internal")]
         private static extern void gameAnalyticsStartSession();
@@ -114,6 +123,10 @@ namespace GameAnalyticsSDK.Wrapper
         [DllImport ("__Internal")]
         [return: MarshalAs(UnmanagedType.LPStr)]
         private static extern string getRemoteConfigsContentAsString();
+
+        [DllImport ("__Internal")]
+        [return: MarshalAs(UnmanagedType.LPStr)]
+        private static extern string getRemoteConfigsContentAsJSON();
 
         [DllImport ("__Internal")]
         [return: MarshalAs(UnmanagedType.LPStr)]
@@ -135,64 +148,34 @@ namespace GameAnalyticsSDK.Wrapper
         [DllImport ("__Internal")]
         private static extern long stopTimer(string key);
 
-#if gameanalytics_mopub_enabled
-        [DllImport("__Internal")]
-        private static extern string _moPubGetSDKVersion();
-#endif
+        [DllImport ("__Internal")]
+        [return: MarshalAs(UnmanagedType.LPStr)]
+        public static extern string getUserId();
 
-        private static void subscribeMoPubImpressions()
+        [DllImport ("__Internal")]
+        [return: MarshalAs(UnmanagedType.LPStr)]
+        public static extern string getExternalUserId();
+
+        [DllImport ("__Internal")]
+        public static extern void useRandomizedId(bool flag);
+
+        [DllImport ("__Internal")]
+        public static extern void enableSDKInitEvent(bool flag);
+
+        [DllImport ("__Internal")]
+        public static extern void enableFpsHistogram(bool flag);
+
+        [DllImport ("__Internal")]
+        public static extern void enableMemoryHistogram(bool flag);
+
+        [DllImport ("__Internal")]
+        public static extern void enableHealthHardwareInfo(bool flag);
+
+        private static void initialize(string gamekey, string gamesecret)
         {
-            GAMopubIntegration.ListenForImpressions(MopubImpressionHandler);
+            gaInitialize(gamekey, gamesecret, GameAnalytics.SettingsGA.NativeErrorReporting);
         }
 
-        private static void MopubImpressionHandler(string json)
-        {
-            if(!string.IsNullOrEmpty(json))
-            {
-#if gameanalytics_mopub_enabled
-                addImpressionEvent("mopub", _moPubGetSDKVersion(), json);
-#endif
-            }
-        }
-
-        private static void subscribeFyberImpressions()
-        {
-            GAMopubIntegration.ListenForImpressions(FyberImpressionHandler);
-        }
-
-        private static void FyberImpressionHandler(string json)
-        {
-            if(!string.IsNullOrEmpty(json))
-            {
-#if gameanalytics_fyber_enabled
-                addImpressionEvent("fyber", Fyber.FairBid.Version, json);
-#endif
-            }
-        }
-
-        private static void subscribeIronSourceImpressions()
-        {
-            GAIronSourceIntegration.ListenForImpressions(IronSourceImpressionHandler);
-        }
-
-        private static void IronSourceImpressionHandler(string json)
-        {
-            if(!string.IsNullOrEmpty(json))
-            {
-#if gameanalytics_ironsource_enabled
-
-                // Remove potential label/tag from version number
-                string v = IronSource.pluginVersion();
-                int index = v.IndexOf("-");
-                if(index >= 0)
-                {
-                    v = v.Substring(0, index);
-                }
-
-                addImpressionEvent("ironsource", v, json);
-#endif
-            }
-        }
 #endif
     }
 }

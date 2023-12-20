@@ -1,10 +1,5 @@
 fileFormatVersion: 2
-guid: f0226250c16c4ff6a7c12cf08ac8e267
-labels:
-- gvh
-- gvh_version-1.2.163
-- gvhp_exportpath-ExternalDependencyManager/Editor/Google.PackageManagerResolver_v1.2.163.dll
-- gvhp_targets-editor
+guid: 07f754a4e3cf34a898750465ec6d4afe
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -19,20 +14,14 @@ PluginImporter:
   - first:
       Any: 
     second:
-      enabled: 0
+      enabled: 1
       settings: {}
   - first:
       Editor: Editor
     second:
-      enabled: 1
-      settings:
-        DefaultValueInitialized: true
-  - first:
-      Windows Store Apps: WindowsStoreApps
-    second:
       enabled: 0
       settings:
-        CPU: AnyCPU
+        DefaultValueInitialized: true
   userData: 
   assetBundleName: 
   assetBundleVariant: 
