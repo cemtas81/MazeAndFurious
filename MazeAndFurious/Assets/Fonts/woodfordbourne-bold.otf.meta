@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 66271f4d1c68e4e28b4187c85b1b09d6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Woodford Bourne
+  fontNames:
+  - Woodford Bourne
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 30ca88c0c34f24851a67da716ad01350, type: 3}
+  - {fileID: 12800000, guid: 202539df9c6d144618c86acef06c08a9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
