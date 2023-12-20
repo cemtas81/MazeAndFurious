@@ -615,7 +615,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnPlay(() => animator.SetTrigger("move3Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0f);
+										Invoke(nameof(ParticleWall), 0f);
 										//kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 4.1f && hit.distance <= 6)
@@ -623,7 +623,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnPlay(() => animator.SetTrigger("move2Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.1f);
+										Invoke(nameof(ParticleWall), 0.1f);
 										//kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 6.1f)
@@ -631,11 +631,11 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnPlay(() => animator.SetTrigger("moveDikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.125f);
+										Invoke(nameof(ParticleWall), 0.125f);
 										//kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 
-									saydir(forcounter, kupX, puan);
+									Saydir(forcounter, kupX, puan);
 
 									ifcase = 1;
 								}
@@ -682,7 +682,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnPlay(() => animator.SetTrigger("move3Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.045f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0f);
+										Invoke(nameof(ParticleWall), 0f);
 										//kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 4.1f && hit.distance <= 6)
@@ -690,7 +690,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnPlay(() => animator.SetTrigger("move2Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.145f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.1f);
+										Invoke(nameof(ParticleWall), 0.1f);
 										//kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 6.1)
@@ -698,7 +698,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnPlay(() => animator.SetTrigger("moveDikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveX(goWay, 0.245f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.125f);
+										Invoke(nameof(ParticleWall), 0.125f);
 										//kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 
@@ -754,7 +754,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnPlay(() => animator.SetTrigger("move3")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveZ(go2.z, 0.045f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0f);
+										Invoke(nameof(ParticleWall), 0f);
 										//kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 4.1f && hit.distance <= 6)
@@ -762,7 +762,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnPlay(() => animator.SetTrigger("move2")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveZ(go2.z, 0.145f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.1f);
+										Invoke(nameof(ParticleWall), 0.1f);
 										//kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 									if (hit.distance >= 6.1f)
@@ -770,7 +770,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnPlay(() => animator.SetTrigger("movee")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										//kup.DOMoveZ(go2.z, 0.245f).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
 										kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-										Invoke("particleWall", 0.125f);
+										Invoke(nameof(ParticleWall), 0.125f);
 										//kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
 									}
 
@@ -824,7 +824,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnPlay(() => animator.SetTrigger("move3")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
 										//kup.DOMoveZ(go2.z, 0.045f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
-										Invoke("particleWall", 0f);
+										Invoke(nameof(ParticleWall), 0f);
 
 									}
 									if (hit.distance >= 4.1f && hit.distance <= 6)
@@ -832,7 +832,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnPlay(() => animator.SetTrigger("move2")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
 										//kup.DOMoveZ(go2.z, 0.145f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
-										Invoke("particleWall", 0.1f);
+										Invoke(nameof(ParticleWall), 0.1f);
 
 									}
 									if (hit.distance >= 6.1f)
@@ -840,7 +840,7 @@ public class swipteInput : MonoBehaviour
 										kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnPlay(() => animator.SetTrigger("movee")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
 										kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
 										//kup.DOMoveZ(go2.z, 0.245f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
-										Invoke("particleWall", 0.125f);
+										Invoke(nameof(ParticleWall), 0.125f);
 									}
 
 
@@ -917,7 +917,7 @@ public class swipteInput : MonoBehaviour
                                         kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnPlay(() => animator.SetTrigger("move3Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
                                         //kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
                                         kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-                                        Invoke("particleWall", 0f);
+                                        Invoke(nameof(ParticleWall), 0f);
                                         //kup.DOMoveX(goWay, 0.045f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
                                     }
                                     if (hit.distance >= 4.1f && hit.distance <= 6)
@@ -925,7 +925,7 @@ public class swipteInput : MonoBehaviour
                                         kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnPlay(() => animator.SetTrigger("move2Dikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
                                         //kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
                                         kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-                                        Invoke("particleWall", 0.1f);
+                                        Invoke(nameof(ParticleWall), 0.1f);
                                         //kup.DOMoveX(goWay, 0.145f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
                                     }
                                     if (hit.distance >= 6.1f)
@@ -933,11 +933,11 @@ public class swipteInput : MonoBehaviour
                                         kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnPlay(() => animator.SetTrigger("moveDikey")).OnComplete(() => kup.transform.DOScale(new Vector3(1, 1, 1), 0));
                                         //kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnStepComplete(() => kayroRotate.DOLocalRotate(new Vector3(-90, 180, 0), 0.5f));
                                         kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => controlBool = true).OnComplete(() => Vibrate());
-                                        Invoke("particleWall", 0.125f);
+                                        Invoke(nameof(ParticleWall), 0.125f);
                                         //kup.DOMoveX(goWay, 0.245f).SetRelative(false).OnComplete(() => particle.GetComponent<ParticleSystem>().Play());
                                     }
 
-                                    saydir(forcounter, kupX, puan);
+                                    Saydir(forcounter, kupX, puan);
 
                                     ifcase = 1;
                                 }
@@ -1168,7 +1168,7 @@ public class swipteInput : MonoBehaviour
 			realScorePAUSE.text = Mathf.RoundToInt(sure).ToString();
 
 		if (visitedNodes.Count == zeminCounter)
-			openPopUp();
+			OpenPopUp();
 
 		if (sure <= 0)//&& CharAdReward.odulAlindi == 0
 		{
@@ -1240,12 +1240,12 @@ public class swipteInput : MonoBehaviour
 		particleFail.GetComponent<ParticleSystem>().Play();
 		particleFail2.GetComponent<ParticleSystem>().Play();
 	}
-	private void particleWall()
+	private void ParticleWall()
 	{
 		particle.GetComponent<ParticleSystem>().Play();
 
 	}
-	public void saydir(int git, int xPosition, int puan)
+	public void Saydir(int git, int xPosition, int puan)
 	{
 		int zCoordinate = Mathf.RoundToInt(kup.position.z);
 
@@ -1782,7 +1782,7 @@ public class swipteInput : MonoBehaviour
 	}
 
 
-	public void nextLevel()
+	public void NextLevel()
 	{
 		SceneManager.LoadScene("New Scene");
 		level = levelSave + 1;
@@ -1824,7 +1824,7 @@ public class swipteInput : MonoBehaviour
 			chestRoomButton.SetActive(false);
 	}
 
-	public void sayac()
+	public void Sayac()
 	{
 		if (levelGemText != null)
 			levelGemText.text = "+" + Mathf.RoundToInt(sure / 4).ToString();
@@ -1835,7 +1835,7 @@ public class swipteInput : MonoBehaviour
 		callOneTime = true;
 	}
 
-	void openPopUp()
+	void OpenPopUp()
 	{
 		if (visitedNodes.Count == zeminCounter)
 		{
@@ -1846,23 +1846,23 @@ public class swipteInput : MonoBehaviour
 
 			if ((levelSave + 1) <= 10 && (levelSave + 1) % 5 == 0)
 			{
-				Invoke("completeAnim", 1.15f);
+				Invoke(nameof(completeAnim), 1.15f);
 			}
 
 			else if ((levelSave + 1) > 10 && (levelSave + 1) % 2 == 0)
 			{
-				Invoke("completeAnim", 1.15f);
+				Invoke(nameof(completeAnim), 1.15f);
 
 			}
 
 			else
-				Invoke("completeAnim", 1.15f);
+				Invoke(nameof(completeAnim), 1.15f);
 
-			Invoke("openPanel", 1);
+			Invoke(nameof(openPanel), 1);
 
 			if (!callShowad)
 			{
-				Invoke("GecisReklam", 1.15f);
+				Invoke(nameof(GecisReklam), 1.15f);
 				callShowad = true;
 			}
 
@@ -1871,7 +1871,7 @@ public class swipteInput : MonoBehaviour
 			konfetti2.Play();
 			konfetti3.Play();
 			konfetti4.Play();*/
-			Invoke("UpLine", 0.05f);
+			Invoke(nameof(UpLine), 0.05f);
 
 
 			pausePU.SetActive(false);
@@ -1885,7 +1885,7 @@ public class swipteInput : MonoBehaviour
 			play.SetActive(false);
 
 			if (!callOneTime)
-				sayac();
+				Sayac();
 		}
 
 	}
